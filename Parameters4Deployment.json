@@ -1,0 +1,756 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "ApplicationGateWaySettings": {
+      "value": [
+        {
+          "httpListeners": [
+            {
+              "properties": {
+                "Protocol": "Https",
+                "FrontendIpConfiguration": {
+                  "Id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/frontendIPConfigurations/appGatewayFrontendIP2"
+                },
+                "SslCertificate": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/sslCertificates/sslFrontEndCertwPvtKey"
+                },
+                "hostName": "web1.example.com",
+                "FrontendPort": {
+                  "Id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/frontendPorts/appGatewayFrontendPorthhtps"
+                }
+              },
+              "name": "web1.example.com"
+            },
+            {
+              "properties": {
+                "Protocol": "Https",
+                "FrontendIpConfiguration": {
+                  "Id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/frontendIPConfigurations/appGatewayFrontendIP2"
+                },
+                "SslCertificate": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/sslCertificates/sslFrontEndCertwPvtKey"
+                },
+                "hostName": "web2.example.com",
+                "FrontendPort": {
+                  "Id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/frontendPorts/appGatewayFrontendPorthhtps"
+                }
+              },
+              "name": "web2.example.com"
+            },
+            {
+              "properties": {
+                "Protocol": "Https",
+                "FrontendIpConfiguration": {
+                  "Id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/frontendIPConfigurations/appGatewayFrontendIP2"
+                },
+                "SslCertificate": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/sslCertificates/sslFrontEndCertwPvtKey"
+                },
+                "hostName": "web3.example.com",
+                "FrontendPort": {
+                  "Id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/frontendPorts/appGatewayFrontendPorthhtps"
+                }
+              },
+              "name": "web3.example.com"
+            }
+          ],
+          "frontendporthttps": 443,
+          "ResourceGroupName": "RG-01",
+          "subnetName": "SN-01",
+          "backEndFQDN": [
+            {
+              "fqdn": "web1.example.com"
+            },
+            {
+              "fqdn": "web2.example.com"
+            },
+            {
+              "fqdn": "web3.example.com"
+            }
+          ],
+          "isInternetFacing": "TRUE",
+          "backendHttpSettingsCollection": [
+            {
+              "properties": {
+                "Port": "443",
+                "Protocol": "Https",
+                "CookieBasedAffinity": "Disabled",
+                "probe": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/probes/web1.example.com"
+                },
+                "authenticationCertificates": [
+                  {
+                    "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/authenticationCertificates/backEndPublicKeyOnly"
+                  }
+                ]
+              },
+              "name": "web1.example.com"
+            },
+            {
+              "properties": {
+                "Port": "443",
+                "Protocol": "Https",
+                "CookieBasedAffinity": "Disabled",
+                "probe": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/probes/web2.example.com"
+                },
+                "authenticationCertificates": [
+                  {
+                    "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/authenticationCertificates/backEndPublicKeyOnly"
+                  }
+                ]
+              },
+              "name": "web2.example.com"
+            },
+            {
+              "properties": {
+                "Port": "443",
+                "Protocol": "Https",
+                "CookieBasedAffinity": "Disabled",
+                "probe": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/probes/web3.example.com"
+                },
+                "authenticationCertificates": [
+                  {
+                    "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/authenticationCertificates/backEndPublicKeyOnly"
+                  }
+                ]
+              },
+              "name": "web3.example.com"
+            }
+          ],
+          "appGatewayFrontendIP": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/virtualNetworks/fdsfd/subnets/SN-01",
+          "backendPort": 80,
+          "authenticationCertificatesID": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/authenticationCertificates/backEndPublicKeyOnly",
+          "applicationGatewayInstanceCount": 1,
+          "cookieBasedAffinity": "Disabled",
+          "WebAppDomainnames": [
+            {
+              "name": "web1.example.com"
+            },
+            {
+              "name": "web2.example.com"
+            },
+            {
+              "name": "web3.example.com"
+            }
+          ],
+          "NumofWebApps": 3,
+          "applicationGatewaySize": "Standard_Small",
+          "requestRoutingRules": [
+            {
+              "properties": {
+                "backendAddressPool": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/backendAddressPools/appGatewayBackendPool"
+                },
+                "backendHttpSettings": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/backendHttpSettingsCollection/web1.example.com"
+                },
+                "RuleType": "Basic",
+                "httpListener": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/httpListeners/web1.example.com",
+                  "name": "web1.example.com"
+                }
+              },
+              "Name": "web1.example.com"
+            },
+            {
+              "properties": {
+                "backendAddressPool": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/backendAddressPools/appGatewayBackendPool"
+                },
+                "backendHttpSettings": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/backendHttpSettingsCollection/web2.example.com"
+                },
+                "RuleType": "Basic",
+                "httpListener": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/httpListeners/web2.example.com",
+                  "name": "web2.example.com"
+                }
+              },
+              "Name": "web2.example.com"
+            },
+            {
+              "properties": {
+                "backendAddressPool": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/backendAddressPools/appGatewayBackendPool"
+                },
+                "backendHttpSettings": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/backendHttpSettingsCollection/web3.example.com"
+                },
+                "RuleType": "Basic",
+                "httpListener": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW1/httpListeners/web3.example.com",
+                  "name": "web3.example.com"
+                }
+              },
+              "Name": "web3.example.com"
+            }
+          ],
+          "applicationGatewayName": "AppGW1",
+          "probes": [
+            {
+              "properties": {
+                "timeout": 30,
+                "host": "web1.example.com",
+                "unhealthyThreshold": 3,
+                "path": "/",
+                "match": {
+                  "statusCodes": [
+                    "200-399"
+                  ]
+                },
+                "interval": 30,
+                "protocol": "Https"
+              },
+              "name": "web1.example.com"
+            },
+            {
+              "properties": {
+                "timeout": 30,
+                "host": "web2.example.com",
+                "unhealthyThreshold": 3,
+                "path": "/",
+                "match": {
+                  "statusCodes": [
+                    "200-399"
+                  ]
+                },
+                "interval": 30,
+                "protocol": "Https"
+              },
+              "name": "web2.example.com"
+            },
+            {
+              "properties": {
+                "timeout": 30,
+                "host": "web3.example.com",
+                "unhealthyThreshold": 3,
+                "path": "/",
+                "match": {
+                  "statusCodes": [
+                    "200-399"
+                  ]
+                },
+                "interval": 30,
+                "protocol": "Https"
+              },
+              "name": "web3.example.com"
+            }
+          ],
+          "virtualNetworkName": "VN-SCUS",
+          "frontendPort": 80
+        },
+        {
+          "httpListeners": [
+            {
+              "properties": {
+                "Protocol": "Https",
+                "FrontendIpConfiguration": {
+                  "Id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/frontendIPConfigurations/appGatewayFrontendIP2"
+                },
+                "SslCertificate": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/sslCertificates/sslFrontEndCertwPvtKey"
+                },
+                "hostName": "web21.example.com",
+                "FrontendPort": {
+                  "Id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/frontendPorts/appGatewayFrontendPorthhtps"
+                }
+              },
+              "name": "web21.example.com"
+            },
+            {
+              "properties": {
+                "Protocol": "Https",
+                "FrontendIpConfiguration": {
+                  "Id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/frontendIPConfigurations/appGatewayFrontendIP2"
+                },
+                "SslCertificate": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/sslCertificates/sslFrontEndCertwPvtKey"
+                },
+                "hostName": "web22.example.com",
+                "FrontendPort": {
+                  "Id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/frontendPorts/appGatewayFrontendPorthhtps"
+                }
+              },
+              "name": "web22.example.com"
+            }
+          ],
+          "frontendporthttps": 443,
+          "ResourceGroupName": "RG-01",
+          "subnetName": "SN-01",
+          "backEndFQDN": [
+            {
+              "fqdn": "web21.example.com"
+            },
+            {
+              "fqdn": "web22.example.com"
+            }
+          ],
+          "isInternetFacing": "TRUE",
+          "backendHttpSettingsCollection": [
+            {
+              "properties": {
+                "Port": "443",
+                "Protocol": "Https",
+                "CookieBasedAffinity": "Disabled",
+                "probe": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/probes/web21.example.com"
+                },
+                "authenticationCertificates": [
+                  {
+                    "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/authenticationCertificates/backEndPublicKeyOnly"
+                  }
+                ]
+              },
+              "name": "web21.example.com"
+            },
+            {
+              "properties": {
+                "Port": "443",
+                "Protocol": "Https",
+                "CookieBasedAffinity": "Disabled",
+                "probe": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/probes/web22.example.com"
+                },
+                "authenticationCertificates": [
+                  {
+                    "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/authenticationCertificates/backEndPublicKeyOnly"
+                  }
+                ]
+              },
+              "name": "web22.example.com"
+            }
+          ],
+          "appGatewayFrontendIP": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/virtualNetworks/fdsfd/subnets/SN-01",
+          "backendPort": 80,
+          "authenticationCertificatesID": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/authenticationCertificates/backEndPublicKeyOnly",
+          "applicationGatewayInstanceCount": 1,
+          "cookieBasedAffinity": "Disabled",
+          "WebAppDomainnames": [
+            {
+              "name": "web21.example.com"
+            },
+            {
+              "name": "web22.example.com"
+            }
+          ],
+          "NumofWebApps": 2,
+          "applicationGatewaySize": "Standard_Small",
+          "requestRoutingRules": [
+            {
+              "properties": {
+                "backendAddressPool": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/backendAddressPools/appGatewayBackendPool"
+                },
+                "backendHttpSettings": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/backendHttpSettingsCollection/web21.example.com"
+                },
+                "RuleType": "Basic",
+                "httpListener": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/httpListeners/web21.example.com",
+                  "name": "web21.example.com"
+                }
+              },
+              "Name": "web21.example.com"
+            },
+            {
+              "properties": {
+                "backendAddressPool": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/backendAddressPools/appGatewayBackendPool"
+                },
+                "backendHttpSettings": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/backendHttpSettingsCollection/web22.example.com"
+                },
+                "RuleType": "Basic",
+                "httpListener": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/httpListeners/web22.example.com",
+                  "name": "web22.example.com"
+                }
+              },
+              "Name": "web22.example.com"
+            }
+          ],
+          "applicationGatewayName": "AppGW2",
+          "probes": [
+            {
+              "properties": {
+                "timeout": 30,
+                "host": "web21.example.com",
+                "unhealthyThreshold": 3,
+                "path": "/",
+                "match": {
+                  "statusCodes": [
+                    "200-399"
+                  ]
+                },
+                "interval": 30,
+                "protocol": "Https"
+              },
+              "name": "web21.example.com"
+            },
+            {
+              "properties": {
+                "timeout": 30,
+                "host": "web22.example.com",
+                "unhealthyThreshold": 3,
+                "path": "/",
+                "match": {
+                  "statusCodes": [
+                    "200-399"
+                  ]
+                },
+                "interval": 30,
+                "protocol": "Https"
+              },
+              "name": "web22.example.com"
+            }
+          ],
+          "virtualNetworkName": "VN-SCUS",
+          "frontendPort": 80
+        },
+        {
+          "httpListeners": [
+            {
+              "properties": {
+                "Protocol": "Https",
+                "FrontendIpConfiguration": {
+                  "Id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/frontendIPConfigurations/appGatewayFrontendIP2"
+                },
+                "SslCertificate": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/sslCertificates/sslFrontEndCertwPvtKey"
+                },
+                "hostName": "web31.example.com",
+                "FrontendPort": {
+                  "Id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/frontendPorts/appGatewayFrontendPorthhtps"
+                }
+              },
+              "name": "web31.example.com"
+            },
+            {
+              "properties": {
+                "Protocol": "Https",
+                "FrontendIpConfiguration": {
+                  "Id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/frontendIPConfigurations/appGatewayFrontendIP2"
+                },
+                "SslCertificate": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/sslCertificates/sslFrontEndCertwPvtKey"
+                },
+                "hostName": "web32.example.com",
+                "FrontendPort": {
+                  "Id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/frontendPorts/appGatewayFrontendPorthhtps"
+                }
+              },
+              "name": "web32.example.com"
+            },
+            {
+              "properties": {
+                "Protocol": "Https",
+                "FrontendIpConfiguration": {
+                  "Id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/frontendIPConfigurations/appGatewayFrontendIP2"
+                },
+                "SslCertificate": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/sslCertificates/sslFrontEndCertwPvtKey"
+                },
+                "hostName": "web33.example.com",
+                "FrontendPort": {
+                  "Id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/frontendPorts/appGatewayFrontendPorthhtps"
+                }
+              },
+              "name": "web33.example.com"
+            },
+            {
+              "properties": {
+                "Protocol": "Https",
+                "FrontendIpConfiguration": {
+                  "Id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/frontendIPConfigurations/appGatewayFrontendIP2"
+                },
+                "SslCertificate": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/sslCertificates/sslFrontEndCertwPvtKey"
+                },
+                "hostName": "web34.example.com",
+                "FrontendPort": {
+                  "Id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/frontendPorts/appGatewayFrontendPorthhtps"
+                }
+              },
+              "name": "web34.example.com"
+            }
+          ],
+          "frontendporthttps": 443,
+          "ResourceGroupName": "RG-01",
+          "subnetName": "SN-01",
+          "backEndFQDN": [
+            {
+              "fqdn": "web31.example.com"
+            },
+            {
+              "fqdn": "web32.example.com"
+            },
+            {
+              "fqdn": "web33.example.com"
+            },
+            {
+              "fqdn": "web34.example.com"
+            }
+          ],
+          "isInternetFacing": "TRUE",
+          "backendHttpSettingsCollection": [
+            {
+              "properties": {
+                "Port": "443",
+                "Protocol": "Https",
+                "CookieBasedAffinity": "Disabled",
+                "probe": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/probes/web31.example.com"
+                },
+                "authenticationCertificates": [
+                  {
+                    "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/authenticationCertificates/backEndPublicKeyOnly"
+                  }
+                ]
+              },
+              "name": "web31.example.com"
+            },
+            {
+              "properties": {
+                "Port": "443",
+                "Protocol": "Https",
+                "CookieBasedAffinity": "Disabled",
+                "probe": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/probes/web32.example.com"
+                },
+                "authenticationCertificates": [
+                  {
+                    "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/authenticationCertificates/backEndPublicKeyOnly"
+                  }
+                ]
+              },
+              "name": "web32.example.com"
+            },
+            {
+              "properties": {
+                "Port": "443",
+                "Protocol": "Https",
+                "CookieBasedAffinity": "Disabled",
+                "probe": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/probes/web33.example.com"
+                },
+                "authenticationCertificates": [
+                  {
+                    "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/authenticationCertificates/backEndPublicKeyOnly"
+                  }
+                ]
+              },
+              "name": "web33.example.com"
+            },
+            {
+              "properties": {
+                "Port": "443",
+                "Protocol": "Https",
+                "CookieBasedAffinity": "Disabled",
+                "probe": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/probes/web34.example.com"
+                },
+                "authenticationCertificates": [
+                  {
+                    "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/authenticationCertificates/backEndPublicKeyOnly"
+                  }
+                ]
+              },
+              "name": "web34.example.com"
+            }
+          ],
+          "appGatewayFrontendIP": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/virtualNetworks/fdsfd/subnets/SN-01",
+          "backendPort": 80,
+          "authenticationCertificatesID": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/authenticationCertificates/backEndPublicKeyOnly",
+          "applicationGatewayInstanceCount": 1,
+          "cookieBasedAffinity": "Disabled",
+          "WebAppDomainnames": [
+            {
+              "name": "web31.example.com"
+            },
+            {
+              "name": "web32.example.com"
+            },
+            {
+              "name": "web33.example.com"
+            },
+            {
+              "name": "web34.example.com"
+            }
+          ],
+          "NumofWebApps": 4,
+          "applicationGatewaySize": "Standard_Small",
+          "requestRoutingRules": [
+            {
+              "properties": {
+                "backendAddressPool": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/backendAddressPools/appGatewayBackendPool"
+                },
+                "backendHttpSettings": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/backendHttpSettingsCollection/web31.example.com"
+                },
+                "RuleType": "Basic",
+                "httpListener": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/httpListeners/web31.example.com",
+                  "name": "web31.example.com"
+                }
+              },
+              "Name": "web31.example.com"
+            },
+            {
+              "properties": {
+                "backendAddressPool": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/backendAddressPools/appGatewayBackendPool"
+                },
+                "backendHttpSettings": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/backendHttpSettingsCollection/web32.example.com"
+                },
+                "RuleType": "Basic",
+                "httpListener": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/httpListeners/web32.example.com",
+                  "name": "web32.example.com"
+                }
+              },
+              "Name": "web32.example.com"
+            },
+            {
+              "properties": {
+                "backendAddressPool": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/backendAddressPools/appGatewayBackendPool"
+                },
+                "backendHttpSettings": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/backendHttpSettingsCollection/web33.example.com"
+                },
+                "RuleType": "Basic",
+                "httpListener": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/httpListeners/web33.example.com",
+                  "name": "web33.example.com"
+                }
+              },
+              "Name": "web33.example.com"
+            },
+            {
+              "properties": {
+                "backendAddressPool": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/backendAddressPools/appGatewayBackendPool"
+                },
+                "backendHttpSettings": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/backendHttpSettingsCollection/web34.example.com"
+                },
+                "RuleType": "Basic",
+                "httpListener": {
+                  "id": "/subscriptions/sad/resourceGroups/asdsad/providers/Microsoft.Network/applicationGateways/AppGW2/httpListeners/web34.example.com",
+                  "name": "web34.example.com"
+                }
+              },
+              "Name": "web34.example.com"
+            }
+          ],
+          "applicationGatewayName": "AppGW2",
+          "probes": [
+            {
+              "properties": {
+                "timeout": 30,
+                "host": "web31.example.com",
+                "unhealthyThreshold": 3,
+                "path": "/",
+                "match": {
+                  "statusCodes": [
+                    "200-399"
+                  ]
+                },
+                "interval": 30,
+                "protocol": "Https"
+              },
+              "name": "web31.example.com"
+            },
+            {
+              "properties": {
+                "timeout": 30,
+                "host": "web32.example.com",
+                "unhealthyThreshold": 3,
+                "path": "/",
+                "match": {
+                  "statusCodes": [
+                    "200-399"
+                  ]
+                },
+                "interval": 30,
+                "protocol": "Https"
+              },
+              "name": "web32.example.com"
+            },
+            {
+              "properties": {
+                "timeout": 30,
+                "host": "web33.example.com",
+                "unhealthyThreshold": 3,
+                "path": "/",
+                "match": {
+                  "statusCodes": [
+                    "200-399"
+                  ]
+                },
+                "interval": 30,
+                "protocol": "Https"
+              },
+              "name": "web33.example.com"
+            },
+            {
+              "properties": {
+                "timeout": 30,
+                "host": "web34.example.com",
+                "unhealthyThreshold": 3,
+                "path": "/",
+                "match": {
+                  "statusCodes": [
+                    "200-399"
+                  ]
+                },
+                "interval": 30,
+                "protocol": "Https"
+              },
+              "name": "web34.example.com"
+            }
+          ],
+          "virtualNetworkName": "VN-SCUS",
+          "frontendPort": 80
+        }
+      ]
+    },
+    "AppGWPIPNames": {
+      "value": [
+        ""
+      ]
+    },
+    "SSLwpvtkey": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/xxxx/resourceGroups/xxxx/providers/Microsoft.KeyVault/vaults/xxxx"
+        },
+        "secretName": "SSLwpvtkey"
+      }
+    },
+    "pfxpassword": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/xxxx/resourceGroups/xxxx/providers/Microsoft.KeyVault/vaults/xxxx"
+        },
+        "secretName": "pfxpassword"
+      }
+    },
+    "SSLpublickey": {
+      "reference": {
+        "keyVault": {
+          "id": "/subscriptions/xxxx/resourceGroups/xxxx/providers/Microsoft.KeyVault/vaults/xxxx"
+        },
+        "secretName": "SSLpublickey"
+      }
+    },
+    "keyVaultName": {
+      "value": "xxxx"
+    }
+  }
+}

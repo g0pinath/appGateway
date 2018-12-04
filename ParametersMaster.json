@@ -1,0 +1,136 @@
+﻿{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "ApplicationGateWaySettings": {
+        "value": [
+         {
+        "applicationGatewayName":  "",
+        "appGatewayFrontendIP":"",
+        "authenticationCertificatesID":"",
+        "virtualNetworkName":  "",
+        "subnetName":  "",
+        "applicationGatewaySize":  "Standard_Small",
+        "applicationGatewayInstanceCount":  1,
+        "frontendPort":  80,
+        "frontendporthttps": 443,
+        "backendPort":  80,        
+        "cookieBasedAffinity": "Disabled",
+        "NumofWebApps": 2,
+        "WebAppDomainnames": [{"name": ""},{"name": ""}],
+        "isInternetFacing": "TRUE",
+        "probes": [
+          {
+            "name": "",
+            "properties": {
+              "host": "",
+              "path": "/",
+              "protocol": "Https",
+              "timeout": 30,
+              "unhealthyThreshold": 3,
+              "interval": 30,
+              "match":{"statusCodes":["200-399"]}
+          }
+        }
+        ],
+        "backendHttpSettingsCollection":
+        [
+          {
+            "name": "",
+            "properties": {
+              "Port": "443",
+              "Protocol": "Https",
+              "CookieBasedAffinity": "Disabled",
+              "authenticationCertificates": [
+                {
+                  "id": ""           
+                }
+              ],
+              "probe": {
+                "id": ""}           
+            }
+          }
+        ],
+        "httpListeners": [
+          {
+            "name": "",
+            "properties": {
+              "FrontendIpConfiguration": {
+                "Id": ""
+              },
+              "hostName": "",
+              "FrontendPort": {
+                "Id": ""
+              },
+              "Protocol": "Https",
+              "SslCertificate": {
+                "id": "" 
+              }
+            }
+          }
+        ],
+        "requestRoutingRules" : [
+          {
+            "Name": "",
+            "properties": {
+              "RuleType": "Basic",
+              "httpListener": {
+            "name": "",
+            
+                "id": ""
+                
+              },
+              "backendAddressPool": {
+                "id": ""
+              },
+              "backendHttpSettings": {
+                "id": ""
+              }
+            }
+          }
+        ],
+        "backEndFQDN":  [{"fqdn": ""},{"fqdn": ""}]
+         }
+          ]
+          },
+          "AppGWPIPNames": {
+            "value": [
+              ""
+            ]
+          },
+       
+          "SSLwpvtkey":{
+            "reference": {
+              "keyVault": {
+                "id": "/subscriptions/xxxx/resourceGroups/xxxx/providers/Microsoft.KeyVault/vaults/xxxx"
+              },
+              "secretName": "SSLwpvtkey"
+            }
+        },
+          "pfxpassword":{
+            "reference": {
+              "keyVault": {
+                "id": "/subscriptions/xxxx/resourceGroups/xxxx/providers/Microsoft.KeyVault/vaults/xxxx"
+                
+              },
+              "secretName": "pfxpassword"
+            }
+        },
+          "SSLpublickey":{
+            "reference": {
+              "keyVault": {
+                "id": "/subscriptions/xxxx/resourceGroups/xxxx/providers/Microsoft.KeyVault/vaults/xxxx"
+                
+              },
+              "secretName": "SSLpublickey"
+            }
+        },
+          
+        "keyVaultName":{"value": "xxxx"}
+        
+  
+      
+      }
+    }
+  
+  

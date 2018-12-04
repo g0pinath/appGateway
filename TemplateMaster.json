@@ -1,0 +1,131 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": 
+  {
+    "ApplicationGateWaySettings": {"type": "array"},
+    "pfxpassword":{"type": "securestring"},
+    "SSLpublickey":{"type": "securestring"},
+    "SSLwpvtkey":{"type": "securestring"},
+    "AppGWPIPNames": {"type": "array"},  
+  
+    "location": 
+        {
+        "type": "string",
+        "defaultValue": "[resourceGroup().location]",
+        "metadata": {
+        "description": "Location for all resources."
+        }
+        }
+  },
+  "variables": {
+    
+    "NumofGateways": 3
+},
+"resources": [
+   {
+        "apiVersion": "2015-05-01-preview",
+        "type": "Microsoft.Network/publicIPAddresses",
+        "copy": {"Name":"childAPGWtemplatecopy",
+            "Count": "[variables('NumofGateways')]"},
+        "name": "[parameters('AppGWPIPNames')[copyindex()]]",
+        "location": "[parameters('location')]",
+        "properties": {
+          "publicIPAllocationMethod": "Dynamic"
+        }
+      },
+  {
+        "apiVersion": "2017-06-01",
+        "type": "Microsoft.Network/applicationGateways",
+        "copy": {"Name":"childAPGWtemplatecopy",
+            "Count": "[variables('NumofGateways')]"},
+        "name": "[parameters('ApplicationGateWaySettings')[copyindex()].applicationGatewayName]",
+        "location": "[parameters('location')]",
+        "dependsOn": ["[resourceId('Microsoft.Network/publicIPAddresses/', parameters('AppGWPIPNames')[copyindex()])]",
+        "[resourceId('Microsoft.KeyVault/vaults/', parameters('keyVaultName'))]"
+        ],
+        "properties": {
+            "sku": {
+            "name": "[parameters('ApplicationGateWaySettings')[copyindex()].applicationGatewaySize]",
+            "tier": "Standard",
+            "capacity": "[parameters('ApplicationGateWaySettings')[copyindex()].applicationGatewayInstanceCount]"
+          },
+          "gatewayIPConfigurations": [
+            {
+              "name": "appGatewayIpConfig",
+              "properties": {
+                "subnet": {
+                  
+                  "id": "[parameters('ApplicationGateWaySettings')[copyindex()].appGatewayFrontendIP]"
+                }
+                  }
+                }
+          ],
+          "probes": "[parameters('ApplicationGateWaySettings')[copyindex()].probes]",
+          "frontendIPConfigurations": [
+            {
+              "name": "appGatewayFrontendIP",
+              "properties": {
+                "subnet": {
+                    "id": "[parameters('ApplicationGateWaySettings')[copyindex()].appGatewayFrontendIP]"
+                    
+                }
+              }
+            },
+            {
+               "name": "appGatewayFrontendIP2",
+               "properties": {
+                      "PublicIPAddress": {
+                        
+                  "id": "[concat(resourceID('Microsoft.Network/publicIPAddresses', parameters('AppGWPIPNames')[copyindex()]))]"
+              }
+                 }
+            }
+          ],
+          "frontendPorts": [
+            {
+              "name": "appGatewayFrontendPort",
+              "properties": {
+                "Port": "[parameters('ApplicationGateWaySettings')[copyindex()].frontendPort]"
+              }
+            },
+            {
+              "name": "appGatewayFrontendPorthhtps",
+              "properties": {
+                "Port": "[parameters('ApplicationGateWaySettings')[copyindex()].frontendporthttps]"
+              }
+            }
+          ],
+          "backendAddressPools": [
+            {
+              "name": "appGatewayBackendPool",
+              "properties": {
+                
+                "BackendAddresses": "[parameters('ApplicationGateWaySettings')[copyindex()].backEndFQDN]"
+                }
+            }
+          ],
+          "backendHttpSettingsCollection": "[parameters('ApplicationGateWaySettings')[copyindex()].backendHttpSettingsCollection]",
+          
+          "httpListeners": "[parameters('ApplicationGateWaySettings')[copyindex()].httpListeners]",
+          "sslCertificates":[
+            {
+              "name": "sslFrontEndCertwPvtKey",
+              "properties":{
+                "data": "[parameters('SSLwpvtkey')]",
+                "password": "[parameters('pfxpassword')]"
+              }
+            }
+          ],
+          "authenticationCertificates":[
+            {
+              "name": "backEndPublicKeyOnly",
+              "properties":{"data": "[parameters('SSLpublickey')]"}
+            }
+          ],
+          
+        "requestRoutingRules": "[parameters('ApplicationGateWaySettings')[copyindex()].requestRoutingRules]"
+            
+        }
+      }
+]
