@@ -1,0 +1,4 @@
+applicationGatewayName,virtualNetworkName,ResourceGroupName,subnetName,applicationGatewaySize,applicationGatewayInstanceCount,frontendPort,backendPort,cookieBasedAffinity,NumofWebApps,WebAppDomainnames,isInternetFacing
+AppGW1,VN-SCUS,RG-01,SN-01,Standard_Small,1,443,443,Disabled,2,web1.example.com;web2.example.com;web3.example.com,TRUE
+AppGW2,VN-SCUS,RG-01,SN-01,Standard_Small,1,443,443,Disabled,2,web21.example.com;web22.example.com,TRUE
+AppGW2,VN-SCUS,RG-01,SN-01,Standard_Small,1,443,443,Disabled,2,web31.example.com;web32.example.com;web33.example.com;web34.example.com,TRUE
