@@ -24,4 +24,4 @@ Both of these certs needs to uploaded to a keyvault in binary 64 format, once up
 For example, use the below command to upload the pfx cert to key vault, repeat this for .cer file too.
 
 az keyvault secret set --vault-name <KeyvaultName> --encoding base64 --description text/plain --name SSLwpvtkey --file "C:\Repos1\AppGW\selfsigned.pfx"
-
+Refer https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault
